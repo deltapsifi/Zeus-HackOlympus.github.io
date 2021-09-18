@@ -1,4 +1,4 @@
-i---
+---
 layout: post
 title: "Memory Mapping Introduction"
 date: 2021-09-18 16:40:05 +0530
