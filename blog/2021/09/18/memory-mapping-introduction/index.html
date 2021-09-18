@@ -1,0 +1,100 @@
+<p>i&mdash;
+layout: post
+title: &ldquo;Memory Mapping Introduction&rdquo;
+date: 2021-09-18 16:40:05 +0530
+comments: true</p>
+
+<h2>categories: ASM  </h2>
+
+<h3><strong>Memory mapping</strong></h3>
+
+<p>Memory of computer has addresses for its smooth working. These addresses are same for everyone and does not change from use to use. The first byte is at address 0, the second byte is at address 1, and so on until the last byte of the computer’s memory. Basically if I want to explain memory mapping in short there are memory registers that map memory. First a “logical” address is given to these processes which are currently running on the computer by CPU. This “logical” address is completely temporary and is not same for all users, its completely virtual. This process when becomes a permanent process, is assigned a “physical” address on the memory itself.</p>
+
+<p>How exciting huh ? Well for me these things are very exciting 😁</p>
+
+<p><strong>These mapping registers can only map data of 2 different size – 4096 bytes and 2 megabytes. Linux uses 2MB for the kernel and 4Kb for most other uses.</strong> Recent CPUs can support up to 1GB !!</p>
+
+<p>To understand these concepts more clearly, you all can read this <a href="http://library.bagrintsev.me/ASM/Introduction%20to%2064bit%20Intel%20Assembly%20Language%20Programming%20for%20Linux.2011.pdf">book</a> and watch this Youtube <a href="https://www.youtube.com/watch?v=p3q5zWCw8J4">video</a></p>
+
+<p>I have ended memory mapping in very short and has just given you a little overview because I can’t explain everything here but you all can look the links that I have given you all.</p>
+
+<p>So now comes the more exciting part. Ever heard of stack, heap etc. Well in this article you will be explained everything. That’s why I just love assembly, It completely builds all the concepts clear related to working of computers.</p>
+
+<h3><strong>Process Memory Model</strong></h3>
+
+<p>For the smooth running of a process linux memory is divided into 4 logical segments- text, data, heap and stack. A process is mapped from lowest address i.e. <strong>text</strong> to the highest address i.e. <strong>stack.</strong></p>
+
+<p>Now before moving ahead I would like to discuss about 2 types of memory – <strong>logical and physical. The segmentation is done in the logical part</strong> of the memory because it can vary but the <strong>pages(blocks) are the part of physical part</strong> of the memory as a block size remains constant.</p>
+
+<p><img align="left" src="/images/process-memory-dia.png" HSPACE=”50” VSPACE=”50”></p>
+
+<ol>
+<li><p><strong>Text</strong> – In assembly text segment is indicated by <code>.text</code> , It contains the machine instructions of a program. It basically tells the story of what program does.</p></li>
+<li><p><strong>Data</strong> - Data segment contains all the static data. It is represented by <code>.data</code> .Which means it contains all variables that have been initialized in the program.</p></li>
+<li><p><strong>.bss</strong> – Above data segment, there is <code>.bss</code> segment which stands for “block started by symbol”. Ths segment contains data which is statistically allocated in a process, but is not stored in the executable file. Instead this data is allocated when the process is loaded into memory.</p></li>
+<li><p><strong>Heap</strong> - Heap is basically some space reserved by the program so that it can use it for future purposes when calling functions like <code>malloc.</code></p></li>
+</ol>
+
+
+<p>The size of segments vary according to usage but the ultimate size of the page will remain same. for example Sometimes, you will see that processor is processing a lot of information in that case we can assume that <code>.text</code> part is large but other parts is small.Sometimes processing done is less but still <code>.data</code> is large but others are small. Sometimes a process needs more temporary storage for later use so stack will be more in size.</p>
+
+<h4><strong>Hello world program in assembly.</strong></h4>
+
+<p>I do not want you to understand the whole code below. Just observe how segmentation has been performed in the code and keep this code in the back of your mind so that you can understand and write codes yourself in the upcoming articles.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='as'><span class='line'><span class="nx">section</span> <span class="p">.</span><span class="nx">data</span>
+</span><span class='line'>    <span class="nx">msg</span> <span class="nx">db</span> <span class="s2">&quot;Hello world!&quot;</span><span class="o">,</span><span class="mi">10</span>      <span class="o">;</span> <span class="mi">10</span> <span class="nx">is</span> <span class="nx">the</span> <span class="nx">ASCII</span> <span class="nx">code</span> <span class="k">for</span> <span class="nx">a</span> <span class="k">new</span> <span class="nx">line</span> <span class="p">(</span><span class="nx">LF</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">section</span> <span class="p">.</span><span class="nx">text</span>
+</span><span class='line'>    <span class="nx">global</span> <span class="nx">_start</span>
+</span><span class='line'>    <span class="nx">_start</span><span class="o">:</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">mov</span> <span class="nx">rax</span><span class="o">,</span> <span class="mi">1</span>
+</span><span class='line'>        <span class="nx">mov</span> <span class="nx">rdi</span><span class="o">,</span> <span class="mi">1</span>
+</span><span class='line'>        <span class="nx">mov</span> <span class="nx">rsi</span><span class="o">,</span> <span class="nx">msg</span>
+</span><span class='line'>        <span class="nx">mov</span> <span class="nx">rdx</span><span class="o">,</span> <span class="mi">13</span>
+</span><span class='line'>        <span class="nx">syscall</span> <span class="o">;</span> <span class="nx">write</span> <span class="nx">syscall</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">mov</span> <span class="nx">rax</span><span class="o">,</span> <span class="mi">60</span>
+</span><span class='line'>        <span class="nx">mov</span> <span class="nx">rdi</span><span class="o">,</span> <span class="mi">0</span>
+</span><span class='line'>        <span class="nx">syscall</span> <span class="o">;</span> <span class="nx">exit</span> <span class="nx">syscall</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To run this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>nasm -felf64 helloworld.asm
+</span><span class='line'>ld helloworld.o -o helloworld
+</span><span class='line'>./helloworld
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I have not added a lot of things in this article. So please read and view the following sources.</p>
+
+<p>Sources:</p>
+
+<p>Book link given in the previous article.</p>
+
+<p><a href="http://www.cs.uwm.edu/classes/cs315/Bacon/Lecture/HTML/ch10s04.html">http://www.cs.uwm.edu/classes/cs315/Bacon/Lecture/HTML/ch10s04.html</a> </br>
+<a href="https://jameshfisher.com/2018/03/10/linux-assembly-hello-world/">https://jameshfisher.com/2018/03/10/linux-assembly-hello-world/</a> </br>
+<a href="https://web.stanford.edu/class/archive/cs/cs107/cs107.1212/schedule.html">https://web.stanford.edu/class/archive/cs/cs107/cs107.1212/schedule.html</a> </br>
+<a href="https://youtu.be/HWwNTWY1rxo">https://youtu.be/HWwNTWY1rxo</a></p>
