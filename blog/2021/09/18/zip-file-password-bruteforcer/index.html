@@ -1,88 +1,42 @@
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE HTML>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>Zip File Password Bruteforcer - zeus@hackolympus:~$</title>
-  <meta name="author" content="Zeus">
+	<meta charset="utf-8">
+	<title>Zip File Password Bruteforcer  | zeus@hackolympus:~$</title>
 
-  
-  <meta name="description" content="Sometime we know a lot about our victim. Now consider a situation where victim has created a zip file but has protected it with a password. You don’t &hellip;">
-  
+	<meta name="author" content="Zeus"> 
+	
+	<meta name="description" content="Sometime we know a lot about our victim. Now consider a situation where victim has created a zip file but has protected it with a password. You don’t &hellip;"> <meta name="keywords" content="">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
-  <link rel="canonical" href="http://zeus-hackolympus.github.io/blog/2021/09/18/zip-file-password-bruteforcer/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="zeus@hackolympus:~$" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-
+	<link href="/atom.xml" rel="alternate" title="zeus@hackolympus:~$" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
 </head>
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">zeus@hackolympus:~$</a></h1>
-  
-</hgroup>
+
+
+<body>
+	<header id="header" class="inner"><h1>zeus@hackolympus:~$</h1>
+<nav id="main-nav"><ul>
+	<li><a href="/">Blog</a></li>
+	<li><a href="/archives">Archive</a></li>
+	<li><a href="/contact">Contact</a></li>
+</ul>
+</nav>
+
 
 </header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="https://www.google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="sitesearch" value="zeus-hackolympus.github.io">
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-    
-      <h1 class="entry-title">Zip File Password Bruteforcer</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2021-09-18T13:34:52+05:30'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2021</span></span> <span class='time'>1:34 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>Sometime we know a lot about our victim. Now consider a situation where victim has created a zip file but has protected it with a password. You don’t know what exactly the password is but you surely what password he/she can use (considering you have done enough reconnaissance on your victim).</p>
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">Zip File Password Bruteforcer</h2>
+	<div class="entry-content"><p>Sometime we know a lot about our victim. Now consider a situation where victim has created a zip file but has protected it with a password. You don’t know what exactly the password is but you surely what password he/she can use (considering you have done enough reconnaissance on your victim).</p>
 
 <p>So what to do in these kinds of situations ? Should we test the every possible password, well that’s a good option but sometimes our wordlist is so long the it becomes tedious to test them by our self. So what we can do is, we can build a simple script which will test all the password in a file and will return us the correct password.</p>
 
@@ -166,104 +120,39 @@
 </div>
 
 
-  <footer>
-    <p class="meta">
-      
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
   
 
-<span class="byline author vcard">Posted by <span class="fn">Zeus</span></span>
-
-      
 
 
+<time datetime="2021-09-18T13:34:52+05:30" pubdate data-updated="true">Sep 18th, 2021</time></div>
+	
 
+<div class="tags">
 
-<time class='entry-date' datetime='2021-09-18T13:34:52+05:30'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2021</span></span> <span class='time'>1:34 pm</span></time>
-      
+	<a class='category' href='/blog/categories/misc/'>misc</a>
 
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/misc/'>misc</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zeus-hackolympus.github.io/blog/2021/09/18/zip-file-password-bruteforcer/" data-via="" data-counturl="http://zeus-hackolympus.github.io/blog/2021/09/18/zip-file-password-bruteforcer/" >Tweet</a>
-  
-  
-  
 </div>
 
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2021/09/18/memory-mapping-introduction/" title="Previous Post: Memory Mapping Introduction">&laquo; Memory Mapping Introduction</a>
-      
-      
-    </p>
-  </footer>
+
+</div>
 </article>
-
 </div>
-
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2021/09/18/zip-file-password-bruteforcer/">Zip File Password Bruteforcer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2021/09/18/memory-mapping-introduction/">Memory Mapping Introduction</a>
-      </li>
-    
-  </ul>
-</section>
-
-
-
-
-
-  
-</aside>
-
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2021 - Zeus -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
+	<footer id="footer" class="inner">Copyright &copy; 2021
+ Zeus 
+<br>
+Powered by Octopress.
 </footer>
-  
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
+	
 
 </body>
 </html>
